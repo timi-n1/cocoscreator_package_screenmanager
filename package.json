@@ -1,0 +1,23 @@
+{
+    "name": "screen-manager",
+    "version": "0.0.1",
+    "description": "Screen管理",
+    "author": "Aguangtian",
+    "main": "main.js",
+    "main-menu": {
+        "Packages/通用/Screen管理": {
+            "message": "screen-manager:run"
+        }
+    },
+    "dependencies": {},
+    "devDependencies": {
+
+    },
+    "panel": {
+        "main": "panel/index.js",
+        "type": "dockable",
+        "title": "Screen管理",
+        "width": 600,
+        "height": 800
+    }
+}
