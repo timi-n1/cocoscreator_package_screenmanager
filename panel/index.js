@@ -56,7 +56,7 @@ Editor.Panel.extend({
 
     ready() {
 
-        const fs = require('fs');
+        const fs = require('fs-extra');
         const path = require('path');
         const resFile = path.resolve(Editor.projectInfo.path, './assets/lib/screen-manager.js');
         const dtsFile = path.resolve(Editor.projectInfo.path, './typings/screen-manager.d.ts');
@@ -151,6 +151,7 @@ Editor.Panel.extend({
                 save() {
                     //js文件
                     const txt = templateTxt.replace(`'##ScreenDataHoldPlace##'`, JSON.stringify(this.dialogList, true, 4));
+                    fs.ensureFileSync(resFile);
                     fs.writeFileSync(resFile, txt);
                     //d.ts文件
                     let dts = 'declare module cs.Screen {\n';
@@ -158,6 +159,7 @@ Editor.Panel.extend({
                         dts += `\texport var ${item.name}: ScreenData\n`;
                     }
                     dts += '}\n';
+                    fs.ensureFileSync(dtsFile);
                     fs.writeFileSync(dtsFile, dts);
                     Editor.success('成功');
                 }
